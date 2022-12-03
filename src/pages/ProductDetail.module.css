@@ -1,0 +1,74 @@
+.Wrapper{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.Detail{
+    color: #BD0707;
+    font-weight: bolder;
+    font-size: 40px;
+}
+
+.HargaItem{
+    font-size: 20px;
+    color:#974A4A;
+}
+
+.Gambar{
+    height: 500px;
+    box-shadow: 4px 4px 4px black;
+    border-radius: 5%;
+    max-width: 100%;
+}
+
+.Toto{
+    font-size: 25px;
+    color: #974A4A;
+    font-weight: bold;
+    margin-top:30px;
+}
+
+.Wraper{
+    cursor: pointer;
+    text-align: center;
+    position:relative;
+}
+
+.GambarToping{
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:10px;
+    margin-top: 10px;
+}
+
+.Badge{
+    position: absolute;
+    z-index: 1;
+    right:20%;
+    box-shadow: 2px 2px 2px 2px black;
+    border-radius: 50%;
+}
+
+.HargaToping{
+    color: #BD0707;
+}
+
+.NamaToping{
+    color: #BD0707;
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+.Buton{
+    background-color: #BD0707; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 262px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+}          

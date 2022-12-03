@@ -1,0 +1,47 @@
+.Backg{
+    position: static;
+    margin-bottom: -290px;
+}
+    
+.Title{
+    font-weight: 900;
+    color: white;
+    position: absolute;
+    top: -50px;
+}
+ 
+.Imagess{
+    position: relative;
+    top: -65px;
+    left: 645px;
+    z-index: 1;
+    width: 450px;
+}
+    
+.Cardtext{
+    position: relative;
+    top: 100px;
+    left:50px;
+    margin-top: 35px;
+}
+    
+.Textss{
+    position: absolute;
+    margin-top: 10px;
+    color: white;
+    top: 20px;
+}
+    
+.Textp{
+    position: absolute;
+    margin-top: 10px;
+    color: white;
+    top: 80px;
+}
+ 
+.Textb{
+    position: absolute;
+    margin-top: 10px;
+    color: white;
+    top: 220px;
+}

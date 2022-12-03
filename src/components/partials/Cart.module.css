@@ -1,0 +1,21 @@
+.Keranjang{
+    margin-right: 3px;
+}
+
+.Badge{
+    position: absolute;
+    font-size: 0.8em;
+    right:-20px;
+    top:-6px;
+    background:red;
+    text-align: center;
+    border-radius: 30px;
+    color:white;
+    padding:3px 10px;
+}
+
+.BadgeWrapper{
+    position:relative;
+    display:inline-block;
+    margin-right: 40px;
+}

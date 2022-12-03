@@ -1,0 +1,18 @@
+.CardPrice{
+    color:#974A4A;
+}
+
+.Badan{
+    margin : 5% 0px;
+}
+
+.CardTitle{
+    font-weight: bold;
+    color: red;
+    font-size: 0.9em;
+}
+    
+.WrapTambahan{
+    cursor: pointer;
+    border-radius: 10px;
+}

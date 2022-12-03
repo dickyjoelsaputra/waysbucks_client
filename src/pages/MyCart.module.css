@@ -1,0 +1,17 @@
+.CardTitle{
+    font-weight: bold;
+    color: #BD0707;
+    font-size: 2em;
+    margin-top: 40px;
+}
+
+.Image{
+    width: 250px;
+    object-fit: cover;
+}
+
+.ImageKiri{
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px black;
+}

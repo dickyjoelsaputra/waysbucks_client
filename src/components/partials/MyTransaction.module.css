@@ -1,0 +1,69 @@
+.CardTitle{
+    font-weight: bold;
+    color: red;
+    font-size: 1.5em;
+    margin-top: 40px;
+}
+
+.ImageKanan{
+    width: 140px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+} 
+
+.Rectangle{
+    width: fit-content;
+    height: fit-content;
+    background-color:#F7DADA;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.RightContentWrapper{   
+    margin: 10px;
+}
+
+
+.RightTitle{
+    font-size: 17px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: red;
+}
+
+
+.Pee{
+    color: red;
+    font-size: 13px;
+}
+    
+.Sepan{
+    font-weight: bold;
+}
+    
+.Topieng{
+    font-weight: bold;
+    font-size: 13px;
+    color: #e25555;
+}   
+
+.Pricee{
+    font-size: 13px;
+    color: #b66e6e;
+}
+    
+.TrsKanan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    flex-direction: column;
+}
+
+.Logos{
+    border-radius: 50%;
+    width: 90px;
+    margin-bottom: 20px;
+}
+    

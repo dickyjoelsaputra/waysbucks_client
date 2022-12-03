@@ -1,0 +1,29 @@
+.CardTitle{
+    font-weight: bold;
+    color: red;
+    font-size: 1.5em;
+    margin-top: 40px;
+}
+
+.Image{
+    width: 250px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+
+.TextAtas{
+    font-weight: bold;
+    color:#613D2B;
+    font-size: 20px;
+}
+
+.TextBawah{
+    font-size: 20px;
+    color:#613D2B;
+}
+
+
+.TextWrapper{
+    margin-bottom:20px;
+}
