@@ -9,8 +9,13 @@ import TempatSampah from "../assets/tempatsampah.png"
 import styles from "./MyCart.module.css"
 import { useQuery } from 'react-query'
 import { API } from '../config/api'
+import { useMutation } from 'react-query'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function MyCart() {
+
+    const navigate = useNavigate()
 
     // cart ambil data cart
     let { data: cart, refetch } = useQuery("cartsCache", async () => {
@@ -27,6 +32,62 @@ export default function MyCart() {
         await API.delete(`/cart/` + id);
         refetch()
     };
+
+    const form = {
+        status: "pending",
+        total: resultTotal,
+    };
+
+    const handleSubmit = useMutation(async (e) => {
+        const config = {
+            headers: {
+                "Content-type": "application/json",
+            },
+        };
+
+        // Insert transaction data
+        const body = JSON.stringify(form);
+        const response = await API.patch("/transaction", body, config);
+        const token = response.data.data.token;
+
+        window.snap.pay(token, {
+            onSuccess: function (result) {
+                console.log(result);
+                navigate("/profile");
+            },
+            onPending: function (result) {
+                console.log(result);
+                navigate("/profile");
+            },
+            onError: function (result) {
+                console.log(result);
+            },
+            onClose: function () {
+                alert("you closed the popup without finishing the payment");
+            },
+        });
+
+        await API.patch("/cart", body, config);
+    });
+
+    // SNAP MIDTRAINS
+    useEffect(() => {
+        //change this to the script source you want to load, for example this is snap.js sandbox env
+        const midtransScriptUrl = "https://app.sandbox.midtrans.com/snap/snap.js";
+        //change this according to your client-key
+        const myMidtransClientKey = "Client key here ...";
+
+        let scriptTag = document.createElement("script");
+        scriptTag.src = midtransScriptUrl;
+        // optional if you want to set script attribute
+        // for example snap.js have data-client-key attribute
+        scriptTag.setAttribute("data-client-key", myMidtransClientKey);
+
+        document.body.appendChild(scriptTag);
+        return () => {
+            document.body.removeChild(scriptTag);
+        };
+    }, []);
 
     return (
         <>
@@ -92,7 +153,7 @@ export default function MyCart() {
                                 </Stack>
                             </Stack>
                             <div className="d-grid gap-2 my-4">
-                                <Button variant="danger" type="submit">
+                                <Button variant="danger" type="submit" onClick={(e) => handleSubmit.mutate(e)}>
                                     Pay
                                 </Button>
                             </div>
