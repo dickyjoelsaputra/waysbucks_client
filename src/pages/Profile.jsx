@@ -9,12 +9,10 @@ import { useQuery } from "react-query";
 import { UserContext } from '../context/UserContext'
 import { useContext } from 'react'
 
-import { useState } from 'react'
 import styles from './Profile.module.css'
 
 
 import ModalProfile from '../components/partials/ModalProfile'
-import { createContext } from 'react'
 
 export default function Profile() {
     // state untuk user
@@ -28,6 +26,8 @@ export default function Profile() {
     });
 
     // const globalrefetch = createContext(refetch)
+
+    // transaksi
 
     return (
         <>

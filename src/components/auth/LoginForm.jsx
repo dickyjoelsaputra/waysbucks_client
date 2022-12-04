@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useMutation } from 'react-query';
 import { API } from '../../config/api';
 import { useContext } from 'react';
@@ -11,6 +11,8 @@ import { UserContext } from '../../context/UserContext';
 import { useQuery } from 'react-query';
 
 export default function LoginForm({ Show, Hide }) {
+
+    let navigate = useNavigate()
 
     const [state, dispatch] = useContext(UserContext);
     const [form, setForm] = useState({
@@ -47,6 +49,7 @@ export default function LoginForm({ Show, Hide }) {
         } catch (error) {
             console.log(error);
         }
+        navigate(0)
     });
 
     return (

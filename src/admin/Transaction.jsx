@@ -6,8 +6,52 @@ import styled from 'styled-components'
 import success from '../assets/success.png'
 import cancle from '../assets/cancle.png'
 import styles from './Transaction.module.css'
+import { API } from '../config/api'
+import { useQuery } from 'react-query'
+import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 
 export default function Transaction() {
+
+    const Gambor = styled.img`
+        max-width: 100%;
+    `
+
+    let navigate = useNavigate()
+
+    let { data: transactions } = useQuery("transactionsCache", async () => {
+        const response = await API.get("/transactions");
+        return response.data.data;
+    });
+
+    let handleSuccess = async (id) => {
+        const config = {
+            headers: {
+                "Content-type": "application/json",
+            }
+        }
+        const form = {
+            id: id,
+            status: "success"
+        }
+        API.patch("/transactionupdate", form, config);
+        navigate(0)
+    }
+
+
+    let handleCancel = (id) => {
+        const config = {
+            headers: {
+                "Content-type": "application/json",
+            }
+        }
+        const form = {
+            id: id,
+            status: "cancel"
+        }
+        API.patch("/transactionupdate", form, config)
+        navigate(0)
+    }
 
     return (
         <>
@@ -26,21 +70,57 @@ export default function Transaction() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Sugeng No Pants</td>
-                            <td>Cileungsi</td>
-                            <td>16820</td>
-                            <td><p className={styles.IncomeColor}>69.000</p></td>
-                            <td><p className={styles.SWaiting}>Waiting Approve</p></td>
-                            <td>
-                                <div className={styles.Wraple}>
-                                    <div className={styles.Cancle}>Cancle</div>
-                                    <div className={styles.Approve}>Approve</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
+                        {transactions?.map((item, index) => (
+                            <>
+                                <tr>
+                                    <th scope="row">{index + 1} , {item?.id}</th>
+                                    <td>{item?.user.name}</td>
+
+                                    <td>{item?.user?.profile?.address}</td>
+                                    <td>{item?.user?.profile?.postal_code}</td>
+                                    <td><p className={styles.IncomeColor}>{item?.total}</p></td>
+                                    <td>
+                                        {
+                                            item?.status === "pending" ?
+                                                <p className={styles.SWaiting}>Waiting Approve</p>
+                                                : item?.status === "cancel" ?
+                                                    <p className={styles.SCancle}>Cancel</p>
+                                                    : item?.status === "success" ?
+                                                        <p className={styles.SSucces}>On The Way</p>
+                                                        :
+                                                        <p className={styles.SOtw}>Waiting Payment</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div className={styles.Wraple}>
+                                            {
+                                                item?.status === "pending" ?
+                                                    <>
+                                                        <div className={styles.Cancle}
+                                                            onClick={() => { handleCancel(item?.id) }}
+                                                        >Cancel</div>
+                                                        <div className={styles.Approve}
+                                                            onClick={() => { handleSuccess(item?.id) }}
+                                                        >Approve</div>
+                                                    </>
+                                                    : item?.status === "cancel" ?
+                                                        <img
+                                                            className={styles.IconStatus}
+                                                            src={cancle} />
+                                                        : item?.status === "success" ?
+                                                            <img
+                                                                className={styles.IconStatus}
+                                                                src={success} />
+                                                            :
+                                                            <p className={styles.SOtw}>Waiting Payment</p>
+                                            }
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </>
+                        ))}
+                        {/* <tr>
                             <th scope="row">2</th>
                             <td>Aryo</td>
                             <td>Bandung</td>
@@ -66,7 +146,7 @@ export default function Transaction() {
                             <td><p className={styles.IncomeColor}>20.000</p></td>
                             <td><p className={styles.SOtw}>On The Way</p></td>
                             <td><img className={styles.IconStatus} src={success} /></td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </table>
             </Container>

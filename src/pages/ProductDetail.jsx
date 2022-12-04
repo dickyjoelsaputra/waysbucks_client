@@ -26,6 +26,7 @@ export default function ProductDetail() {
         return response.data.data;
     });
 
+    // console.log(product.image)
 
     // HANDLE TOPING
     const [Topieng, setTopieng] = useState([])
@@ -89,6 +90,7 @@ export default function ProductDetail() {
                     <Row>
                         <Col md={5}>
                             <img className={styles.Gambar} src={product?.image} />
+                            {/* <p>{product?.image}</p> */}
                         </Col>
 
                         <Col md={7}>
@@ -108,9 +110,9 @@ export default function ProductDetail() {
                                                             :
                                                             <img className='d-none' src={buttonceklis} />
                                                     }
-                                                    <img className={styles.GambarToping} src={e.image} />
-                                                    <p className={styles.NamaToping}>{e.title}</p>
-                                                    <p className={styles.HargaToping}>Rp.{e.price}</p>
+                                                    <img className={styles.GambarToping} src={e?.image} />
+                                                    <p className={styles.NamaToping}>{e?.title}</p>
+                                                    <p className={styles.HargaToping}>Rp.{e?.price}</p>
                                                 </div>
                                             </Col>
                                         </>

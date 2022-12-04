@@ -47,7 +47,7 @@ export default function MyCart() {
 
         // Insert transaction data
         const body = JSON.stringify(form);
-        const response = await API.patch("/transaction", body, config);
+        const response = await API.patch("/transaction", config);
         const token = response.data.data.token;
 
         window.snap.pay(token, {
@@ -127,7 +127,6 @@ export default function MyCart() {
                                         </Row>
                                     </>
                                 ))
-
                             }
                         </div>
                     </Col>
