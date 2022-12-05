@@ -48,6 +48,7 @@ export default function MyCart() {
         // Insert transaction data
         const body = JSON.stringify(form);
         const response = await API.patch("/transaction", config);
+        console.log(response)
         const token = response.data.data.token;
 
         window.snap.pay(token, {
