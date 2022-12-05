@@ -47,7 +47,7 @@ export default function MyCart() {
 
         // Insert transaction data
         const body = JSON.stringify(form);
-        const response = await API.patch("/transaction", config);
+        const response = await API.patch("/transaction", body, config);
         console.log(response)
         const token = response.data.token;
 
