@@ -6,9 +6,6 @@ import {
   Route,
   useNavigate
 } from "react-router-dom";
-
-import { useState } from 'react';
-
 import { API, setAuthToken } from "./config/api";
 import { useContext, useEffect } from "react";
 import { UserContext } from "./context/UserContext";

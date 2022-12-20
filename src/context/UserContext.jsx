@@ -7,7 +7,6 @@ const initial = {
     user: {}
 }
 
-
 const reducer = (state, action) => {
     const { type, payload } = action
 
