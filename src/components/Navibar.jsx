@@ -31,6 +31,8 @@ export default function Navibar({ refetch }) {
     const [state] = useContext(UserContext);
     const isLogin = state.isLogin;
 
+    console.log(isLogin);
+
     return (
         <div>
             <Navbar expand="lg">
